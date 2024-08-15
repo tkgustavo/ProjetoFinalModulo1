@@ -8,7 +8,7 @@ public class Menu {
     public static void inicializador(){
 
     }
-    public static void menu(){
+    public void menu(){
         inicializador();
 
     }
