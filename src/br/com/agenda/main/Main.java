@@ -8,10 +8,6 @@ public class Main {
 
         Funcoes funcoes = new Funcoes();
         funcoes.cadastrarContato();
-
-
-
-
     }
 
 }
