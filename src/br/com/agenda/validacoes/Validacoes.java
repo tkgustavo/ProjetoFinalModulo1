@@ -1,7 +1,7 @@
 package br.com.agenda.validacoes;
 
 public class Validacoes {
-    public boolean isEmail(String email) {
+    public static boolean isEmail(String email) {
         //TODO método aceita dois '@', adicionar verificação
 
         //Verifica se o email não é nulo, nem vazio e possui '@'
