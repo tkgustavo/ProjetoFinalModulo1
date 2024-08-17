@@ -5,7 +5,7 @@ public class Validacoes {
         //TODO método aceita dois '@', adicionar verificação
 
         //Verifica se o email não é nulo, nem vazio e possui '@'
-        //Verifica se o '@' não está no início da palavra, nem no final (ao meio sa string)
+        //Verifica se o '@' não está no início da palavra, nem no final (ao meio da string)
         return email != null &&
                 email.contains("@") &&
                 email.indexOf('@') > 0 &&

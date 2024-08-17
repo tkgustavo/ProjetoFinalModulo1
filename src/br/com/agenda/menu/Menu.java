@@ -2,7 +2,6 @@ package br.com.agenda.menu;
 import br.com.agenda.Enum.FuncoesMenu;
 import br.com.agenda.funcoes.Funcoes;
 import br.com.agenda.read.ReadData;
-import java.util.Scanner;
 
 public class Menu {
     /*
@@ -10,7 +9,14 @@ public class Menu {
     INTERAR O ENUN
      */
     public static void inicializador() {
-
+        System.out.println("");
+        System.out.println(">>>>>>Menu da Agenda<<<<<<");
+        System.out.println("1 - Adicionar Contato");
+        System.out.println("2 - Listar Contatos");
+        System.out.println("3 - Buscar Contato");
+        System.out.println("4 - Editar Contato");
+        System.out.println("5 - Remover Contato");
+        System.out.println("6 - Sair");
     }
     public static void menu() {
         FuncoesMenu escolha = null;
