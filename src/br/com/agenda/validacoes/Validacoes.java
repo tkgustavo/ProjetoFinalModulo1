@@ -12,12 +12,7 @@ public class Validacoes {
                 counter++; // letra = 2
             }
         }
-        if(counter == 2){
-            System.out.println("Você digitou o email errado, favor corrigir.");
-        }
 
-        //Verifica se o email não é nulo, nem vazio e possui '@'
-        //Verifica se o '@' não está no início da palavra, nem no final (ao meio da string)
         return  email != null &&
                 email.contains("@") &&
                 email.indexOf('@') > 0 &&
@@ -27,6 +22,9 @@ public class Validacoes {
 
     }
 
+    public static void main(String[] args) {
+        System.out.println(isEmail("outroluiz@@@gmail.com"));
+    }
 
 
 }
