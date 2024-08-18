@@ -29,9 +29,6 @@ public class ReadData {
         }
         return opcao;
     }
-
-
-
     public static String readName () {
         System.out.println("Informe o nome do Contato (20 characters) ou enter para cancelar: ");
         String name = scanner.nextLine();
