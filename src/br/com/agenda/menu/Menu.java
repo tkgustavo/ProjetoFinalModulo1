@@ -1,16 +1,15 @@
 package br.com.agenda.menu;
+
 import br.com.agenda.Enum.FuncoesMenu;
 import br.com.agenda.funcoes.Funcoes;
 import br.com.agenda.read.ReadData;
 
 public class Menu {
-    /*
-    Essa função printa a tela inicial da agenda
-    INTERAR O ENUN
-     */
+
+    // Exibe a tela inicial do menu da agenda
     public static void inicializador() {
         System.out.println("");
-        System.out.println(">>>>>>Menu da Agenda<<<<<<");
+        System.out.println(">>>>>> Menu da Agenda <<<<<<");
         System.out.println("1 - Adicionar Contato");
         System.out.println("2 - Listar Contatos");
         System.out.println("3 - Buscar Contato");
@@ -18,12 +17,12 @@ public class Menu {
         System.out.println("5 - Remover Contato");
         System.out.println("6 - Sair");
     }
+
     public static void menu() {
         FuncoesMenu escolha = null;
         do {
-            Funcoes.imprimirAgenda();
             inicializador();
-            //Cases
+            // Cases
             switch (ReadData.readMenu()) {
                 case 1:
                     Funcoes.cadastrarContato();
@@ -45,12 +44,11 @@ public class Menu {
                     System.out.println("Saindo...");
                     break;
                 default:
-                    System.out.println("Opção inválida! Tente novamente");
+                    System.out.println("Opção inválida! Tente novamente.");
             }
         } while (escolha != FuncoesMenu.SAIR);
-        //Feacha o scanner da classe ReadData
+
+        // Fecha o scanner da classe ReadData
         ReadData.closeScanner();
     }
 }
-
-
