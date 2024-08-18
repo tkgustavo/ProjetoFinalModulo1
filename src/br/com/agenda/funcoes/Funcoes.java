@@ -56,11 +56,16 @@ public class Funcoes {
 
         System.out.printf("%-" + IDLENGTH + "s\t|\t%-" + NAMELENGTH + "s\t|\t%-" + PHONELENGTH + "s\t|\t%s\n", ID, NAME, PHONE, MAIL);
         int id = 1;
-        for (String[] contato : contatos) {
-            if (!contato[1].isEmpty()) {
-                System.out.printf("%-" + IDLENGTH + "d\t|\t%-" + NAMELENGTH + "s\t|\t%-" + PHONELENGTH + "s\t|\t%s\n", id, contato[0], contato[1], contato[2]);
+
+        for (int i = 0; i < contatos.length; i++) {
+            if (contatos[i][0] != null && !contatos[i][0].isEmpty()) { // Verifica se o nome do contato não é nulo ou vazio
+                System.out.printf("%-" + IDLENGTH + "d\t|\t%-" + NAMELENGTH + "s\t|\t%-" + PHONELENGTH + "s\t|\t%s\n", id, contatos[i][0], contatos[i][1], contatos[i][2]);
                 id++;
             }
+        }
+
+        if (id == 1) {
+            System.out.println("Nenhum contato encontrado.");
         }
     }
 
@@ -79,20 +84,50 @@ public class Funcoes {
 
     public static void editarContato() {
         String numeroContato = ReadData.readPhone();
-        if (numeroContato.isEmpty()) return;
 
-        int posicaoContato = encontrarContatoPorNumero(numeroContato);
+        // Retorna ao menu caso o usuário tenha saído antes de informar um número
+        if (numeroContato.equals("")) {
+            return;
+        }
 
-        if (posicaoContato == -1) {
+        int posicaoContato = -1;
+        for (int i = 0; i < contatos.length; i++) {
+            if (numeroContato.equals(contatos[i][1])) { // Verifica se o número de telefone é igual ao informado
+                posicaoContato = i;
+                break;
+            }
+        }
+
+        if (posicaoContato == -1) { // Caso não encontre o contato
             System.out.println("Contato não encontrado!");
         } else {
-            contatos[posicaoContato][0] = ReadData.readName();
-            contatos[posicaoContato][1] = ReadData.readPhone();
-            contatos[posicaoContato][2] = ReadData.readMail();
-            exibirContato(posicaoContato + 1);
-            System.out.println("Contato atualizado com sucesso!");
+            System.out.println("Editando o contato:");
+            System.out.printf("Nome atual: %s\n", contatos[posicaoContato][0]);
+            System.out.printf("Telefone atual: %s\n", contatos[posicaoContato][1]);
+            System.out.printf("E-mail atual: %s\n", contatos[posicaoContato][2]);
+
+            // Solicita novos dados para o contato
+            String novoNome = ReadData.readName();
+            String novoTelefone = ReadData.readPhone();
+            String novoEmail = ReadData.readMail();
+
+            // Atualiza o contato apenas se houver novos dados válidos
+            if (!novoNome.equals("")) {
+                contatos[posicaoContato][0] = novoNome;
+            }
+            if (!novoTelefone.equals("")) {
+                contatos[posicaoContato][1] = novoTelefone;
+            }
+            if (!novoEmail.equals("")) {
+                contatos[posicaoContato][2] = novoEmail;
+            }
+
+            System.out.println("Contato editado com sucesso!");
+            System.out.printf("%-" + IDLENGTH + "s\t|\t%-" + NAMELENGTH + "s\t|\t%-" + PHONELENGTH + "s\t|\t%s\n", ID, NAME, PHONE, MAIL);
+            System.out.printf("%-" + IDLENGTH + "d\t|\t%-" + NAMELENGTH + "s\t|\t%-" + PHONELENGTH + "s\t|\t%s\n", posicaoContato + 1, contatos[posicaoContato][0], contatos[posicaoContato][1], contatos[posicaoContato][2]);
         }
     }
+
 
     public static void excluirContato() {
         String numeroContato = ReadData.readPhone();
@@ -163,7 +198,7 @@ public class Funcoes {
     private static void exibirCabecalho(String titulo) {
         System.out.println("");
         System.out.println("##############################################################################################");
-        System.out.println("############################################" + NEGRITO + titulo + RESET + "############################################");
+        System.out.println("###########################################" + NEGRITO + titulo + RESET + "##########################################");
         System.out.println("##############################################################################################");
     }
 

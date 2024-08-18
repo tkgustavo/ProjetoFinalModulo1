@@ -28,7 +28,7 @@ public class ReadData {
     public static String readPhone () {
         System.out.println("Informe o número de telefone do Contato ou ENTER para cancelar: ");
         String phone = scanner.nextLine();
-        if((phone.length() == 11 && phone.matches("\\d+")) || phone.equals("")){
+        if((phone.length() == 11 && phone.matches("\\d+")) || phone.isBlank()){
             return phone;
         }
         System.out.println("Telefone inválido!");
@@ -37,7 +37,7 @@ public class ReadData {
     public static String readMail () {
         System.out.println("Informe o e-mail do Contato ou ENTER para continuar sem  e-mail: ");//acho que não é necessário sempre informar o e-mail para ter um contato então é bom ficar como optativo.
         String email = scanner.nextLine();
-        if (Validacoes.isEmail(email) || email.equals("")) {
+        if (Validacoes.isEmail(email) || email.isBlank()) {
             return email;
         }
         System.out.println("Email inválido. Por favor, digite um email válido.");
