@@ -2,21 +2,36 @@ package br.com.agenda.read;
 
 import br.com.agenda.validacoes.Validacoes;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ReadData {
     public static final int NAMELENGTH = 20;
     static Scanner scanner = new Scanner(System.in);
     public static int readMenu () {
-        System.out.println("Escolha uma opção: ");
-        //modificar para next line e tratar caso o usuário digite algo fora do menu
-        int opcao = scanner.nextInt();
-        scanner.nextLine(); // Limpa o buffer
-        if(opcao>=1 && opcao<=6)
-            return opcao;
-        else
-            return readMenu();//repetição da chamada de comando até que o usuário insira um comando valido
+        int opcao = -1;
+        boolean validInput = false;
+
+        while (!validInput) {
+            try {
+                System.out.println("Escolha uma opção: ");
+                opcao = scanner.nextInt();
+                scanner.nextLine(); // Limpa o buffer
+                if (opcao >= 1 && opcao <= 6) {
+                    validInput = true;
+                } else {
+                    System.out.println("Opção inválida! Por favor, insira um número entre 1 e 6.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada inválida! Por favor, insira um número.");
+                scanner.next(); // Limpa a entrada inválida do scanner
+            }
+        }
+        return opcao;
     }
+
+
+
     public static String readName () {
         System.out.println("Informe o nome do Contato (20 characters) ou enter para cancelar: ");
         String name = scanner.nextLine();
