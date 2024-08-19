@@ -300,7 +300,7 @@ public class Funcoes {
         System.out.printf("%-" + IDLENGTH + "s\t|\t%-" + NAMELENGTH + "s\t|\t%-" + PHONELENGTH + "s\t|\t%s\n", "3", "Gustavo Miranda", "33333333333", "gustavohenrique.miranda@hotmail.com");
         System.out.printf("%-" + IDLENGTH + "s\t|\t%-" + NAMELENGTH + "s\t|\t%-" + PHONELENGTH + "s\t|\t%s\n", "4", "Kevin Silva", "44444444444", "kevin.silva2010.ks@gmail.com");
         System.out.printf("%-" + IDLENGTH + "s\t|\t%-" + NAMELENGTH + "s\t|\t%-" + PHONELENGTH + "s\t|\t%s\n", "5", "Luiz Oliveira", "55555555555", "luizoliveirautonomo@gmail.com");
-        System.out.printf("%-" + IDLENGTH + "s\t|\t%-" + NAMELENGTH + "s\t|\t%-" + PHONELENGTH + "s\t|\t%s\n", "5", "Mário Duarte", "66666666666", "mcbd.eng@gmail.com");
+        System.out.printf("%-" + IDLENGTH + "s\t|\t%-" + NAMELENGTH + "s\t|\t%-" + PHONELENGTH + "s\t|\t%s\n", "6", "Mário Duarte", "66666666666", "mcbd.eng@gmail.com");
     }
 
 }
