@@ -71,6 +71,11 @@ public class Funcoes {
     }
 
     public static void buscarContato() {
+        if (espacoContatos == 0) {
+            System.out.println("\nAinda não há contatos nesta agenda.");
+            return;
+        }
+
         String numeroContato = ReadData.readPhone();
         if (numeroContato.isEmpty()) return;
 
@@ -84,6 +89,11 @@ public class Funcoes {
     }
 
     public static void editarContato() {
+        if (espacoContatos == 0) {
+            System.out.println("\nAinda não há contatos nesta agenda.");
+            return;
+        }
+
         String numeroContato = ReadData.readPhone();
 
         // Retorna ao menu caso o usuário tenha saído antes de informar um número
@@ -131,6 +141,11 @@ public class Funcoes {
 
 
     public static void excluirContato() {
+        if (espacoContatos == 0) {
+            System.out.println("\nAinda não há contatos nesta agenda.");
+            return;
+        }
+
         String numeroContato = ReadData.readPhone();
         if (numeroContato.isEmpty()) return;
 

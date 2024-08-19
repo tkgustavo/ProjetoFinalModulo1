@@ -40,9 +40,6 @@ public class Menu {
                 default -> System.out.println("\nOpção inválida! Tente novamente.");
             }
         } while (escolha != FuncoesMenu.SAIR);
-
-
-
         // Fecha o scanner da classe ReadData
         ReadData.closeScanner();
     }
