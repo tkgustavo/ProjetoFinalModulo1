@@ -12,7 +12,7 @@ public class ReadData {
     public static FuncoesMenu readMenu () {
         System.out.println("Escolha uma opção: ");
         try{
-            int opcao = Integer.parseInt(scanner.nextLine());
+            int opcao = Integer.parseInt(scanner.nextLine().trim());
             for (FuncoesMenu funcao : FuncoesMenu.values()) {
                 if (opcao == funcao.ordinal() + 1) {
                     return funcao;
@@ -42,6 +42,7 @@ public class ReadData {
         return readPhone();
     }
     public static String readMail () {
+        //TODO validar formato email
         System.out.println("Informe o e-mail do Contato ou ENTER para continuar sem  e-mail: ");//acho que não é necessário sempre informar o e-mail para ter um contato então é bom ficar como optativo.
         String email = scanner.nextLine();
         if (Validacoes.isEmail(email) || email.isBlank()) {

@@ -38,8 +38,18 @@ public class Funcoes {
         String nome = ReadData.readName();
         if (nome.isEmpty()) return;
 
-        String telefone = ReadData.readPhone();
-        if (telefone.isEmpty()) return;
+        String telefone;
+
+        while (true) {
+            telefone = ReadData.readPhone();
+            if (telefone.isEmpty()) return;
+            if (telefoneDuplicado(telefone)) {
+                System.out.println("Telefone já cadastrado.");
+            } else {
+                break;
+            }
+        }
+
 
         String email = ReadData.readMail();
 
@@ -88,6 +98,8 @@ public class Funcoes {
         }
     }
 
+
+
     public static void editarContato() {
         if (espacoContatos == 0) {
             System.out.println("\nAinda não há contatos nesta agenda.");
@@ -119,23 +131,47 @@ public class Funcoes {
 
             // Solicita novos dados para o contato
             String novoNome = ReadData.readName();
-            String novoTelefone = ReadData.readPhone();
+
+            String novoTelefone;
+            while (true) {
+                novoTelefone = ReadData.readPhone();
+                if (novoTelefone.isEmpty()) break;
+                if (novoTelefone.equalsIgnoreCase(contatos[posicaoContato][1].trim())){
+                    System.out.println("Este é o telefone atual!");
+                }else if (telefoneDuplicado(novoTelefone)) {
+                    System.out.println("Telefone já cadastrado.");
+                } else {
+                    break;
+                }
+            }
+
             String novoEmail = ReadData.readMail();
 
             // Atualiza o contato apenas se houver novos dados válidos
+            boolean editado = false;
             if (!novoNome.equals("")) {
                 contatos[posicaoContato][0] = novoNome;
+                editado = true;
             }
             if (!novoTelefone.equals("")) {
                 contatos[posicaoContato][1] = novoTelefone;
+                editado = true;
             }
             if (!novoEmail.equals("")) {
                 contatos[posicaoContato][2] = novoEmail;
+                editado = true;
             }
 
-            System.out.println("Contato editado com sucesso!");
+            if (editado) {
+                System.out.println("Contato editado com sucesso!\n");
+            }else {
+                System.out.println("Nenhum dado foi alterado!\n");
+            }
+
             System.out.printf("%-" + IDLENGTH + "s\t|\t%-" + NAMELENGTH + "s\t|\t%-" + PHONELENGTH + "s\t|\t%s\n", ID, NAME, PHONE, MAIL);
             System.out.printf("%-" + IDLENGTH + "d\t|\t%-" + NAMELENGTH + "s\t|\t%-" + PHONELENGTH + "s\t|\t%s\n", posicaoContato + 1, contatos[posicaoContato][0], contatos[posicaoContato][1], contatos[posicaoContato][2]);
+
+
         }
     }
 
@@ -208,6 +244,10 @@ public class Funcoes {
             }
         }
         return -1;
+    }
+
+    private static boolean telefoneDuplicado(String telefone){
+        return encontrarContatoPorNumero(telefone) != -1;
     }
 
     public static void exibirCabecalho(String titulo) {
