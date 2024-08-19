@@ -20,34 +20,28 @@ public class Menu {
     }
 
     public static void menu() {
-        FuncoesMenu escolha = null;
+        FuncoesMenu escolha;
         do {
             inicializador();
-            // Cases
-            switch (ReadData.readMenu()) {
-                case 1:
-                    Funcoes.cadastrarContato();
-                    break;
-                case 2:
-                    Funcoes.listarContatos();
-                    break;
-                case 3:
-                    Funcoes.buscarContato();
-                    break;
-                case 4:
-                    Funcoes.editarContato();
-                    break;
-                case 5:
-                    Funcoes.excluirContato();
-                    break;
-                case 6:
-                    escolha = FuncoesMenu.SAIR;
-                    System.out.println("Saindo...");
-                    break;
-                default:
-                    System.out.println("Opção inválida! Tente novamente.");
+            escolha = ReadData.readMenu();
+
+            if (escolha == null) {
+                System.out.println("\nOpção inválida. Tente novamente.");
+                continue;
+            }
+
+            switch (escolha) {
+                case ADICIONAR -> Funcoes.cadastrarContato();
+                case LISTAR -> Funcoes.listarContatos();
+                case DETALHAR -> Funcoes.buscarContato();
+                case EDITAR -> Funcoes.editarContato();
+                case REMOVER -> Funcoes.excluirContato();
+                case SAIR -> System.out.println("Saindo...");
+                default -> System.out.println("\nOpção inválida! Tente novamente.");
             }
         } while (escolha != FuncoesMenu.SAIR);
+
+
 
         // Fecha o scanner da classe ReadData
         ReadData.closeScanner();

@@ -174,7 +174,6 @@ public class Funcoes {
                 posicaoAux++;
             }
         }
-
         contatos = aux;
     }
 

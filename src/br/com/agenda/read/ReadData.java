@@ -1,5 +1,6 @@
 package br.com.agenda.read;
 
+import br.com.agenda.Enum.FuncoesMenu;
 import br.com.agenda.validacoes.Validacoes;
 
 import java.util.Scanner;
@@ -7,16 +8,19 @@ import java.util.Scanner;
 public class ReadData {
     public static final int NAMELENGTH = 20;
     static Scanner scanner = new Scanner(System.in);
-    public static int readMenu () {
+
+    public static FuncoesMenu readMenu () {
         System.out.println("Escolha uma opção: ");
-        //modificar para next line e tratar caso o usuário digite algo fora do menu
         int opcao = scanner.nextInt();
         scanner.nextLine(); // Limpa o buffer
-        if(opcao>=1 && opcao<=6)
-            return opcao;
-        else
-            return readMenu();//repetição da chamada de comando até que o usuário insira um comando valido
+        for (FuncoesMenu funcao : FuncoesMenu.values()) {
+            if (opcao == funcao.ordinal() + 1) {
+                return funcao;
+            }
+        }
+        return null;
     }
+
     public static String readName () {
         System.out.println("Informe o nome do Contato (20 characters) ou enter para cancelar: ");
         String name = scanner.nextLine();
