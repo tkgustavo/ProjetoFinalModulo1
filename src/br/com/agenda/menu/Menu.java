@@ -4,12 +4,13 @@ import br.com.agenda.Enum.FuncoesMenu;
 import br.com.agenda.funcoes.Funcoes;
 import br.com.agenda.read.ReadData;
 
+import static br.com.agenda.funcoes.Funcoes.exibirCabecalho;
+
 public class Menu {
 
     // Exibe a tela inicial do menu da agenda
     public static void inicializador() {
-        System.out.println("");
-        System.out.println(">>>>>> Menu da Agenda <<<<<<");
+        exibirCabecalho("Menu da Agenda");
         System.out.println("1 - Adicionar Contato");
         System.out.println("2 - Listar Contatos");
         System.out.println("3 - Buscar Contato");

@@ -196,11 +196,8 @@ public class Funcoes {
         return -1;
     }
 
-    private static void exibirCabecalho(String titulo) {
-        System.out.println("");
-        System.out.println("##############################################################################################");
-        System.out.println("###########################################" + NEGRITO + titulo + RESET + "##########################################");
-        System.out.println("##############################################################################################");
+    public static void exibirCabecalho(String titulo) {
+        System.out.println("\n>>>> " + NEGRITO + titulo + RESET + " <<<<");
     }
 
     private static void exibirContato(int id) {
