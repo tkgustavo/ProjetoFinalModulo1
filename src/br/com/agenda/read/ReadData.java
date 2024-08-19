@@ -8,19 +8,32 @@ public class ReadData {
     public static final int NAMELENGTH = 20;
     static Scanner scanner = new Scanner(System.in);
 
-    public static FuncoesMenu readMenu () {
-        System.out.println("Escolha uma opção: ");
-        try{
-            int opcao = Integer.parseInt(scanner.nextLine().trim());
-            for (FuncoesMenu funcao : FuncoesMenu.values()) {
-                if (opcao == funcao.ordinal() + 1) {
-                    return funcao;
+    public static FuncoesMenu readMenu() {
+        FuncoesMenu escolha = null;
+        boolean validInput = false;
+
+        while (!validInput) {
+            try {
+                System.out.println("Escolha uma opção: ");
+                int opcao = Integer.parseInt(scanner.nextLine().trim());
+
+                for (FuncoesMenu funcao : FuncoesMenu.values()) {
+                    if (opcao == funcao.ordinal() + 1) {
+                        escolha = funcao;
+                        validInput = true;
+                        break;
+                    }
                 }
+
+                if (!validInput) {
+                    System.out.println("Opção inválida! Por favor, insira um número entre 1 e 6.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada inválida! Por favor, insira um número.");
             }
-        } catch (Exception e) {
-            return null;
         }
-        return null;
+
+        return escolha;
     }
 
     public static String readName () {
