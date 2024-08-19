@@ -50,6 +50,26 @@ public class Funcoes {
             }
         }
 
+        String email = ReadData.readMail();
+
+        contatos[posicaoVazia][0] = nome;
+        contatos[posicaoVazia][1] = telefone;
+        contatos[posicaoVazia][2] = email;
+
+        espacoContatos++;
+        System.out.println("Contato cadastrado com sucesso!");
+    }
+
+    public static void cadastrarContatoComTelefone(String telefone) {
+        if (telefone.isBlank()) return;
+        if (espacoContatos == NUMERO_LINHAS) {
+            expandirMatrizContatos();
+        }
+
+        int posicaoVazia = encontrarPosicaoVazia();
+
+        String nome = ReadData.readName();
+        if (nome.isEmpty()) return;
 
         String email = ReadData.readMail();
 
@@ -93,6 +113,9 @@ public class Funcoes {
 
         if (posicaoContato == -1) {
             System.out.println("Contato não encontrado!");
+            if (ReadData.readConfirmar()){
+                cadastrarContatoComTelefone(numeroContato);
+            }
         } else {
             exibirContato(posicaoContato + 1);
         }
@@ -123,6 +146,9 @@ public class Funcoes {
 
         if (posicaoContato == -1) { // Caso não encontre o contato
             System.out.println("Contato não encontrado!");
+            if (ReadData.readConfirmar()){
+                cadastrarContatoComTelefone(numeroContato);
+            }
         } else {
             System.out.println("Editando o contato:");
             System.out.printf("Nome atual: %s\n", contatos[posicaoContato][0]);

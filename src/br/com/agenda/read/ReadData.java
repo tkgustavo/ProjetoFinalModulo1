@@ -50,6 +50,12 @@ public class ReadData {
         System.out.println("Email inválido. Por favor, digite um email válido.");
         return readMail();
     }
+
+    public static boolean readConfirmar () {
+        System.out.println("Deseja cadastrar este telefone como novo contato? (S/N)");
+        String confirmar = scanner.nextLine();
+        return confirmar.equalsIgnoreCase("S".trim());
+    }
     //fecha o scanner
     public static void closeScanner() {
         scanner.close();
