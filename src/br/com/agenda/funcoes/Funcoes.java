@@ -52,6 +52,10 @@ public class Funcoes {
     }
 
     public static void listarContatos() {
+        if (espacoContatos == 0) {
+            System.out.println("\nAinda não há contatos nesta agenda.");
+            return;
+        }
         exibirCabecalho("CONTATOS");
 
         System.out.printf("%-" + IDLENGTH + "s\t|\t%-" + NAMELENGTH + "s\t|\t%-" + PHONELENGTH + "s\t|\t%s\n", ID, NAME, PHONE, MAIL);
@@ -64,9 +68,6 @@ public class Funcoes {
             }
         }
 
-        if (id == 1) {
-            System.out.println("Nenhum contato encontrado.");
-        }
     }
 
     public static void buscarContato() {
