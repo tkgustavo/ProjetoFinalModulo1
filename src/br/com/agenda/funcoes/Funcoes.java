@@ -4,6 +4,7 @@ import br.com.agenda.read.ReadData;
 
 public class Funcoes {
 
+    static int NUMERO_MIN_LINHAS = 100;
     static int NUMERO_LINHAS = 100;
     static final int NUMERO_COLUNAS = 3;
     static final int IDLENGTH = 4;
@@ -193,9 +194,9 @@ public class Funcoes {
             }else {
                 System.out.println("Nenhum dado foi alterado!\n");
             }
-
-            System.out.printf("%-" + IDLENGTH + "s\t|\t%-" + NAMELENGTH + "s\t|\t%-" + PHONELENGTH + "s\t|\t%s\n", ID, NAME, PHONE, MAIL);
-            System.out.printf("%-" + IDLENGTH + "d\t|\t%-" + NAMELENGTH + "s\t|\t%-" + PHONELENGTH + "s\t|\t%s\n", posicaoContato + 1, contatos[posicaoContato][0], contatos[posicaoContato][1], contatos[posicaoContato][2]);
+            exibirContato(posicaoContato+1);
+            //System.out.printf("%-" + IDLENGTH + "s\t|\t%-" + NAMELENGTH + "s\t|\t%-" + PHONELENGTH + "s\t|\t%s\n", ID, NAME, PHONE, MAIL);
+            //System.out.printf("%-" + IDLENGTH + "d\t|\t%-" + NAMELENGTH + "s\t|\t%-" + PHONELENGTH + "s\t|\t%s\n", posicaoContato + 1, contatos[posicaoContato][0], contatos[posicaoContato][1], contatos[posicaoContato][2]);
 
 
         }
@@ -221,7 +222,7 @@ public class Funcoes {
             contatos[posicaoContato][2] = "";
             espacoContatos--;
 
-            if (espacoContatos <= NUMERO_LINHAS / 2 - 10) {
+            if (espacoContatos <= NUMERO_LINHAS / 2 - 10 && NUMERO_LINHAS > NUMERO_MIN_LINHAS) {
                 reduzirMatrizContatos();
             }
 
@@ -236,7 +237,9 @@ public class Funcoes {
         for (int i = 0; i < contatos.length; i++) {
             System.arraycopy(contatos[i], 0, aux[i], 0, contatos[i].length);
         }
-
+        for (int i = contatos.length; i < aux.length; i++) {
+            aux[i] = new String[]{"", "", ""};
+        }
         contatos = aux;
     }
 
@@ -250,6 +253,9 @@ public class Funcoes {
                 aux[posicaoAux] = contato;
                 posicaoAux++;
             }
+        }
+        for (int i = posicaoAux; i < aux.length; i++) {
+            aux[i] = new String[]{"", "", ""};
         }
         contatos = aux;
     }
@@ -284,4 +290,17 @@ public class Funcoes {
         System.out.printf("%-" + IDLENGTH + "s\t|\t%-" + NAMELENGTH + "s\t|\t%-" + PHONELENGTH + "s\t|\t%s\n", ID, NAME, PHONE, MAIL);
         System.out.printf("%-" + IDLENGTH + "d\t|\t%-" + NAMELENGTH + "s\t|\t%-" + PHONELENGTH + "s\t|\t%s\n", id, contatos[id - 1][0], contatos[id - 1][1], contatos[id - 1][2]);
     }
+    public static void cabecalho() {
+        System.out.println("##############################################################################################");
+        System.out.println("##########################################  "+NEGRITO+"AGENDA"+RESET+"  ##########################################");
+        System.out.println("##############################################################################################");
+        System.out.println("#########################################  "+NEGRITO+"EXEMPLOS"+RESET+"  #########################################");
+        System.out.printf("%-" + IDLENGTH + "s\t|\t%-" + NAMELENGTH + "s\t|\t%-" + PHONELENGTH + "s\t|\t%s\n", "1", "Diogenes Viana", "11111111111", "diogenes.carvalho.viana@gmail.com");
+        System.out.printf("%-" + IDLENGTH + "s\t|\t%-" + NAMELENGTH + "s\t|\t%-" + PHONELENGTH + "s\t|\t%s\n", "2", "Fernando Diniz", "22222222222", "diniz.rocha82@gmail.com");
+        System.out.printf("%-" + IDLENGTH + "s\t|\t%-" + NAMELENGTH + "s\t|\t%-" + PHONELENGTH + "s\t|\t%s\n", "3", "Gustavo Miranda", "33333333333", "gustavohenrique.miranda@hotmail.com");
+        System.out.printf("%-" + IDLENGTH + "s\t|\t%-" + NAMELENGTH + "s\t|\t%-" + PHONELENGTH + "s\t|\t%s\n", "4", "Kevin Silva", "44444444444", "kevin.silva2010.ks@gmail.com");
+        System.out.printf("%-" + IDLENGTH + "s\t|\t%-" + NAMELENGTH + "s\t|\t%-" + PHONELENGTH + "s\t|\t%s\n", "5", "Luiz Oliveira", "55555555555", "luizoliveirautonomo@gmail.com");
+        System.out.printf("%-" + IDLENGTH + "s\t|\t%-" + NAMELENGTH + "s\t|\t%-" + PHONELENGTH + "s\t|\t%s\n", "5", "Mário Duarte", "66666666666", "mcbd.eng@gmail.com");
+    }
+
 }

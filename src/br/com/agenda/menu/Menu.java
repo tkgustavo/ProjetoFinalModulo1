@@ -21,6 +21,7 @@ public class Menu {
 
     public static void menu() {
         FuncoesMenu escolha;
+        Funcoes.cabecalho();
         do {
             inicializador();
             escolha = ReadData.readMenu();

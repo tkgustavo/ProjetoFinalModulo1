@@ -37,7 +37,7 @@ public class ReadData {
     }
 
     public static String readName () {
-        System.out.println("Informe o nome do Contato (20 characters) ou enter para cancelar: ");
+        System.out.println("Informe o nome do Contato (20 characters) ou ENTER para cancelar: ");
         String name = scanner.nextLine();
         if(name.length()>20)
             //trunca o nome em 20 characteres
@@ -47,7 +47,7 @@ public class ReadData {
     public static String readPhone () {
         System.out.println("Informe o número de telefone do Contato ou ENTER para cancelar: ");
         String phone = scanner.nextLine();
-        if((phone.length() == 11 && phone.matches("\\d+")) || phone.isBlank()){
+        if((phone.length() == 11 && isNumeric(phone)) || phone.isBlank()){
             return phone;
         }
         System.out.println("Telefone inválido!");
@@ -72,5 +72,19 @@ public class ReadData {
     //fecha o scanner
     public static void closeScanner() {
         scanner.close();
+    }
+    //verifica se a string é composta apenas por números
+    private static boolean isNumeric(String phone) {
+        if (phone == null || phone.isEmpty()) {
+            return false;
+        }
+
+        for (int i = 0; i < phone.length(); i++) {
+            if (!Character.isDigit(phone.charAt(i))) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
