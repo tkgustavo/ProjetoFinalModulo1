@@ -42,7 +42,6 @@ public class ReadData {
         return readPhone();
     }
     public static String readMail () {
-        //TODO validar formato email
         System.out.println("Informe o e-mail do Contato ou ENTER para continuar sem  e-mail: ");//acho que não é necessário sempre informar o e-mail para ter um contato então é bom ficar como optativo.
         String email = scanner.nextLine();
         if (email.matches("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$") || email.isBlank()) {
