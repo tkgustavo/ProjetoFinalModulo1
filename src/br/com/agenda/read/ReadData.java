@@ -1,7 +1,6 @@
 package br.com.agenda.read;
 
 import br.com.agenda.Enum.FuncoesMenu;
-import br.com.agenda.validacoes.Validacoes;
 
 import java.util.Scanner;
 
@@ -42,7 +41,8 @@ public class ReadData {
         return readPhone();
     }
     public static String readMail () {
-        System.out.println("Informe o e-mail do Contato ou ENTER para continuar sem  e-mail: ");//acho que não é necessário sempre informar o e-mail para ter um contato então é bom ficar como optativo.
+        //E-mail optativo
+        System.out.println("Informe o e-mail do Contato ou ENTER para continuar sem  e-mail: ");
         String email = scanner.nextLine();
         if (email.matches("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$") || email.isBlank()) {
             return email;
