@@ -11,12 +11,15 @@ public class ReadData {
 
     public static FuncoesMenu readMenu () {
         System.out.println("Escolha uma opção: ");
-        int opcao = scanner.nextInt();
-        scanner.nextLine(); // Limpa o buffer
-        for (FuncoesMenu funcao : FuncoesMenu.values()) {
-            if (opcao == funcao.ordinal() + 1) {
-                return funcao;
+        try{
+            int opcao = Integer.parseInt(scanner.nextLine());
+            for (FuncoesMenu funcao : FuncoesMenu.values()) {
+                if (opcao == funcao.ordinal() + 1) {
+                    return funcao;
+                }
             }
+        } catch (Exception e) {
+            return null;
         }
         return null;
     }
